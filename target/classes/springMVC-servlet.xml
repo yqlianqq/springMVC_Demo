@@ -8,9 +8,11 @@
 		http://www.springframework.org/schema/data/jpa http://www.springframework.org/schema/data/jpa/spring-jpa-1.8.xsd
 		http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-4.3.xsd">
 	
-	<!--配置处理器映射器-->
+	<!--1.BeanNameUrlHandlerMapping配置处理器映射器，根据bean的name属性的url去寻找-->
 	<bean class="org.springframework.web.servlet.handler.BeanNameUrlHandlerMapping"></bean>
-	<!--SimpleControllerHandlerAdapter为默认的处理器适配器-->
+	
+	
+	<!--2.SimpleControllerHandlerAdapter为默认的处理器适配器，通过访问请求地址，匹配bean的id，找到Controller-->
 	<bean class="org.springframework.web.servlet.mvc.SimpleControllerHandlerAdapter"></bean>
 	<!--配置自定义bean-->
 	<bean id="userController" name="/hello.do" class="cn.sie.controller.UserController"></bean>
@@ -30,4 +32,6 @@
 			</props>
 		</property>
 	</bean>
+	<!--3.ControllerClassNameHandlerMapping,根据bean的类名.do，类名首字母小写来访问Controller-->
+	<bean class="org.springframework.web.servlet.mvc.support.ControllerClassNameHandlerMapping"></bean>
 </beans>
