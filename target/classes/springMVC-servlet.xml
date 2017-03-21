@@ -7,10 +7,27 @@
 		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.3.xsd
 		http://www.springframework.org/schema/data/jpa http://www.springframework.org/schema/data/jpa/spring-jpa-1.8.xsd
 		http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-4.3.xsd">
+	
 	<!--配置处理器映射器-->
 	<bean class="org.springframework.web.servlet.handler.BeanNameUrlHandlerMapping"></bean>
-	
+	<!--SimpleControllerHandlerAdapter为默认的处理器适配器-->
 	<bean class="org.springframework.web.servlet.mvc.SimpleControllerHandlerAdapter"></bean>
+	<!--配置自定义bean-->
+	<bean id="userController" name="/hello.do" class="cn.sie.controller.UserController"></bean>
+	<!--配置试图解析器，拼接真正的物理试图-->
+	<bean id="viewResolver" class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+		<property name="prefix" value="/WEB-INF/jsps/"></property>
+		<property name="suffix" value=".jsp"></property>
+	</bean>
 	
-	<bean id="UserController" name="/hello.do" class="cn.sie.controller.UserController"></bean>
+	<!--简单url处理器映射器，url进行集中配置-->
+	<bean class="org.springframework.web.servlet.handler.SimpleUrlHandlerMapping">
+		<property name="mappings">
+			<props>
+				<prop key="/mine.do">userController</prop>
+				<prop key="/my.do">userController</prop>
+				<prop key="/self.do">userController</prop>
+			</props>
+		</property>
+	</bean>
 </beans>

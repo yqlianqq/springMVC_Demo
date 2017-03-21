@@ -12,7 +12,8 @@ public class UserController implements Controller{
 
 		ModelAndView ModelAndView = new ModelAndView();
 		ModelAndView.addObject("hello","hello springMVC");
-		ModelAndView.setViewName("/WEB-INF/jsps/index.jsp");
+//		ModelAndView.setViewName("/WEB-INF/jsps/index.jsp");
+		ModelAndView.setViewName("index");
 		return ModelAndView;
 	}
 
