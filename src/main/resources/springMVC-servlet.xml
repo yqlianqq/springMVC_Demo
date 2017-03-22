@@ -7,6 +7,19 @@
 		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.3.xsd
 		http://www.springframework.org/schema/data/jpa http://www.springframework.org/schema/data/jpa/spring-jpa-1.8.xsd
 		http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-4.3.xsd">
+	<!--添加注解扫描,扫描cn.sie.controller包，将controller交给spring管理-->
+	<context:component-scan base-package="com.sie.controller"></context:component-scan>
+	<!--配置注解的处理器映射器，负责寻找执行类-->
+	<bean class="org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping"></bean>
+	<!--配置注解的处理器适配器，负责执行controller-->
+	<bean class="org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter"></bean>
+	
+	<!--配置试图解析器，拼接真正的物理试图-->
+	<bean id="viewResolver" class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+		<property name="prefix" value="/WEB-INF/jsps/"></property><!--前缀-->
+		<property name="suffix" value=".jsp"></property><!--后缀-->
+	</bean>
+	
 	
 	<!--1.BeanNameUrlHandlerMapping配置处理器映射器，根据bean的name属性的url去寻找-->
 	<bean class="org.springframework.web.servlet.handler.BeanNameUrlHandlerMapping"></bean>
@@ -16,11 +29,6 @@
 	<bean class="org.springframework.web.servlet.mvc.SimpleControllerHandlerAdapter"></bean>
 	<!--配置自定义bean-->
 	<bean id="userController" name="/hello.do" class="cn.sie.controller.UserController"></bean>
-	<!--配置试图解析器，拼接真正的物理试图-->
-	<bean id="viewResolver" class="org.springframework.web.servlet.view.InternalResourceViewResolver">
-		<property name="prefix" value="/WEB-INF/jsps/"></property>
-		<property name="suffix" value=".jsp"></property>
-	</bean>
 	
 	<!--简单url处理器映射器，url进行集中配置-->
 	<bean class="org.springframework.web.servlet.handler.SimpleUrlHandlerMapping">
@@ -35,7 +43,7 @@
 	<!--3.ControllerClassNameHandlerMapping,根据bean的类名.do，类名首字母小写来访问Controller-->
 	<bean class="org.springframework.web.servlet.mvc.support.ControllerClassNameHandlerMapping"></bean>
 	
-	<!--配置HttpRequestHandlerAdapter适配器-->
+	<!--4.配置HttpRequestHandlerAdapter适配器-->
 	<bean class="org.springframework.web.servlet.mvc.HttpRequestHandlerAdapter"></bean>
 	<bean id="http" class="cn.sie.controller.HttpController"></bean>
 </beans>
