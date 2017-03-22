@@ -7,8 +7,10 @@
 <title>Insert title here</title>
 </head>
 <body>
-<form action="${pageContext.request.contextPath}/user/receiveStr.do" method="post">
-测试字符串：<input type="text" name="username" id="username">
+<form action="${pageContext.request.contextPath}/user/receiveUser.do" method="post">
+姓名：<input type="text" name="username" id="username">
+年龄：<input type="text" name="age" id="age">
+地址：<input type="text" name="address" id="address">
 <input type="submit" value="提交">
 </form>
 </body>
