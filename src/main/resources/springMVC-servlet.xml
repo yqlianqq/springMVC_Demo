@@ -28,10 +28,14 @@
 			<props>
 				<prop key="/mine.do">userController</prop>
 				<prop key="/my.do">userController</prop>
-				<prop key="/self.do">userController</prop>
+				<prop key="/self.do">http</prop>
 			</props>
 		</property>
 	</bean>
 	<!--3.ControllerClassNameHandlerMapping,根据bean的类名.do，类名首字母小写来访问Controller-->
 	<bean class="org.springframework.web.servlet.mvc.support.ControllerClassNameHandlerMapping"></bean>
+	
+	<!--配置HttpRequestHandlerAdapter适配器-->
+	<bean class="org.springframework.web.servlet.mvc.HttpRequestHandlerAdapter"></bean>
+	<bean id="http" class="cn.sie.controller.HttpController"></bean>
 </beans>
