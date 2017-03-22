@@ -13,6 +13,11 @@ public class UsersController {
 		return "hello";
 		
 	}
+	@RequestMapping("toReceiveArray")
+	public String toReceiveArray() {
+		return "receiveArray";
+		
+	}
 	@RequestMapping("toAdd")
 	public String toAdd() {
 		return "add";
@@ -28,4 +33,15 @@ public class UsersController {
 		
 	}
 
+	@RequestMapping("receiveArray")
+	public String receiveIds(Integer[] ids) {
+		System.out.println(ids);
+		for (Integer integer : ids) {
+			System.out.println(integer);
+			
+		}
+		
+		return "hello";
+		
+	}
 }
