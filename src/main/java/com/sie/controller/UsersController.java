@@ -46,6 +46,13 @@ public class UsersController {
 			System.out.println(userCustom.getUserList().get(i).getAge());
 		}
 		return "hello";
-		
+	}
+	@RequestMapping("receiveCustomMaps")
+	public String receiveCustomMaps(UserCustom userCustom) {
+		System.out.println(userCustom);
+		for (Object object : userCustom.getMaps().values()) {
+			System.out.println(object);
+		}
+		return "hello";
 	}
 }
