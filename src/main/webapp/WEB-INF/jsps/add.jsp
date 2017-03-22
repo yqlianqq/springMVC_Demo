@@ -7,10 +7,11 @@
 <title>Insert title here</title>
 </head>
 <body>
-<form action="${pageContext.request.contextPath}/user/receiveUser.do" method="post">
-姓名：<input type="text" name="username" id="username">
-年龄：<input type="text" name="age" id="age">
-地址：<input type="text" name="address" id="address">
+<form action="${pageContext.request.contextPath}/user/receiveUserCustomList.do" method="post">
+姓名：<input type="text" name="userList[0].username" id="username">
+年龄：<input type="text" name="userList[0].age" id="age">
+姓名：<input type="text" name="userList[1].username" id="username">
+年龄：<input type="text" name="userList[1].age" id="age">
 <input type="submit" value="提交">
 </form>
 </body>
